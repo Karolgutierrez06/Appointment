@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Procedimientos Médicos</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-gray: #ecf0f1;
+            --dark-gray: #7f8c8d;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        
+        fieldset {
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 0;
+            grid-column: span 1;
+        }
+        
+        .full-width {
+            grid-column: span 2;
+        }
+        
+        legend {
+            padding: 0 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .date-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .btn-submit {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            grid-column: span 2;
+            margin-top: 10px;
+        }
+        
+        .btn-submit:hover {
+            background-color: #2980b9;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: var(--accent-color);
+        }
+        
+        @media (max-width: 768px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+            
+            fieldset, .full-width {
+                grid-column: span 1;
+            }
+            
+            .date-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://via.placeholder.com/150x50?text=Logo+Hospital" alt="Logo Hospital" class="logo">
+            <h1>Solicitud de Procedimiento Médico</h1>
+            <p>Complete el formulario para solicitar un procedimiento médico</p>
+        </header>
+        
+        <form id="formSolicitudProcedimiento">
+            <!-- Sección Paciente -->
+            <fieldset>
+                <legend>Datos del Paciente</legend>
+                <div class="form-group">
+                    <label for="nombrePaciente" class="required-field">Nombre completo del paciente</label>
+                    <input type="text" id="nombrePaciente" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fechaConsulta" class="required-field">Fecha de consulta</label>
+                    <input type="date" id="fechaConsulta" required>
+                </div>
+            </fieldset>
+
+            <!-- Sección Médico -->
+            <fieldset>
+                <legend>Datos del Médico</legend>
+                <div class="form-group">
+                    <label for="nombreMedico" class="required-field">Nombre del médico tratante</label>
+                    <input type="text" id="nombreMedico" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cedulaMedico" class="required-field">Cédula profesional</label>
+                    <input type="text" id="cedulaMedico" required>
+                </div>
+            </fieldset>
+
+            <!-- Sección Diagnóstico -->
+            <fieldset class="full-width">
+                <legend>Diagnóstico</legend>
+                <div class="form-group">
+                    <label for="diagnostico" class="required-field">Diagnóstico principal</label>
+                    <textarea id="diagnostico" required></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Sección Procedimiento -->
+            <fieldset class="full-width">
+                <legend>Procedimiento Solicitado</legend>
+                <div class="form-group">
+                    <label for="procedimiento" class="required-field">Nombre del procedimiento</label>
+                    <input type="text" id="procedimiento" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="justificacion" class="required-field">Justificación médica</label>
+                    <textarea id="justificacion" required></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Sección Citas -->
+            <fieldset class="full-width">
+                <legend>Disponibilidad para Citas</legend>
+                <div class="form-group">
+                    <label>Fechas disponibles preferentes</label>
+                    <div class="date-options">
+                        <input type="date" id="fechaOpcion1">
+                        <input type="date" id="fechaOpcion2">
+                        <input type="date" id="fechaOpcion3">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="horarioPreferente">Horario preferente</label>
+                    <select id="horarioPreferente">
+                        <option value="matutino">Matutino (8:00 - 12:00)</option>
+                        <option value="vespertino">Vespertino (12:00 - 16:00)</option>
+                        <option value="nocturno">Nocturno (16:00 - 20:00)</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn-submit">Enviar Solicitud</button>
+        </form>
+    </div>
+
+<script src="app.js"></script>
+</body>
+</html>
